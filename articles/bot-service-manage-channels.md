@@ -29,6 +29,21 @@ To configure your bot to connect to a channel, complete the following steps:
 
 After you've configured the channel, users on that channel can start using your bot.
 
+## Bot schema transformation version
+
+As described above, a channel converts incoming messages from other services to the Bot Framework protocol schema. Likewise, messages sent by the bot to other services are transformed from the Bot Framework native schema to the format of these services. This process is called _schema transformation_. The Bot Framework Service maintains backward compatibility of the protocol in order to avoid changing behavior of the existing bots.
+
+Occasionally, a change in the schema transformation process needs to take place that can, potentially, change the behavior of the existing bots. An example of such a change could be any bug fix if a subset of the users have taken a dependency on the existing (however erroneous) behavior. Another example of such a change would be updates or improvements in other services that would benefit bots, however opting in these updates can, potentially, change the existing behavior.
+
+By controlling the **schema transformation version** of their bots, bot developer can control when (if ever) to enable new behavior on their bots. By default, newly created bots get the most recent schema transformation version. Existing bots can be upgraded to the newest version when they are ready to take advantage of the improvements introduced in this version. Any bot can be upgraded or downgraded at any time.
+
+### Supported schema transformation versions
+
+| Schema Transformation Version   | Date        | Description     |
+| --------------------------------| ----------- | --------------------------------------------------------------- |
+| 1.1                             | April 2021  | Change Telegram channel to use [MarkdownV2 syntax](https://core.telegram.org/bots/api#markdownv2-style). |
+| 1.0                             | --  | Initial version |
+
 ## Publish a bot
 
 The publishing process is different for each channel.
